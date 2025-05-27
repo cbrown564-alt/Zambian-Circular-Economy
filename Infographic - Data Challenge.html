@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zambia's Circular Economy: Market Trends & Opportunities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Application Structure Plan: The infographic follows a market research narrative:
+        1. Market Overview: Untapped Potential (Key stats on waste generation, unmeasured economy).
+        2. Key Market Inefficiency: The "Recycling Paradox" (Low official rate vs. high material value).
+        3. Barriers to Market Growth: Challenges (Infrastructure, institutional issues hampering formalization).
+        4. Regional Market Landscape: Comparative Analysis (SSA waste collection, successful regional models).
+        5. Emerging Market Driver: Digital SMEs (Tech adoption, how they bridge data gaps).
+        6. Key Player Spotlight: eBusaka Case Study (Local innovation and impact).
+        7. Future Market Outlook: Policy & Investment (Recommendations as drivers for growth).
+        This structure aims for a logical flow, presenting the problem, context, solutions, and future, suitable for an infographic.
+    -->
+    <!-- Visualization & Content Choices:
+        - Untracked Waste/Unmeasured Economy: Goal: Inform. Viz: Big Number Stat Cards (HTML/Tailwind). Justification: Immediate impact for headline figures. Lib: N/A.
+        - Waste Generation vs. Data Capture: Goal: Compare. Viz: Donut Chart (Chart.js). Justification: Clear proportion visualization. Lib: Chart.js. NO SVG.
+        - Recycling Paradox: Goal: Compare. Viz: Bar Chart (Chart.js). Justification: Direct comparison of rates. Lib: Chart.js. NO SVG.
+        - Infrastructure/Institutional Barriers: Goal: Organize. Viz: Icon + Text Lists (HTML/Tailwind, Unicode). Justification: Concise summary of challenges. Lib: N/A. NO SVG.
+        - SSA Collection Rates: Goal: Compare. Viz: Bar Chart (Chart.js). Justification: Regional benchmarking. Lib: Chart.js. NO SVG.
+        - Regional Success Stories: Goal: Inform. Viz: Feature Cards (HTML/Tailwind). Justification: Showcasing innovative models. Lib: N/A. NO SVG.
+        - eBusaka Pickup Volume: Goal: Inform/Show Trend. Viz: Big Number + Simple Line Chart (Chart.js). Justification: Highlight key player metric and growth. Lib: Chart.js. NO SVG.
+        - Policy Actions: Goal: Organize. Viz: Structured Lists (HTML/Tailwind). Justification: Clear presentation of recommendations. Lib: N/A. NO SVG.
+        All charts use Chart.js (Canvas), with required label wrapping and tooltip configuration.
+    -->
+    <style>
+        body { font-family: 'Arial', sans-serif; } /* Fallback font */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px; /* Adjusted for infographic sections */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; 
+            max-height: 350px;
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .chart-container {
+                height: 320px;
+                max-height: 400px;
+            }
+        }
+        .stat-card {
+            background-color: #FFFFFF; /* White cards */
+            border-left: 5px solid #118AB2; /* Accent color: Blue */
+        }
+        .section-title {
+            color: #073B4C; /* Dark Blue for titles */
+        }
+        .sub-title {
+            color: #118AB2; /* Blue for subtitles */
+        }
+        .accent-text {
+            color: #FF6B6B; /* Red for accents */
+        }
+        .highlight-bg {
+            background-color: #FFD166; /* Yellow for highlight background */
+        }
+        .positive-bg {
+            background-color: #06D6A0; /* Green for positive elements */
+        }
+        .icon-style {
+            color: #118AB2; /* Blue for icons */
+            font-size: 1.75rem; /* Tailwind text-3xl */
+            margin-right: 0.75rem; /* Tailwind mr-3 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-[#073B4C] text-white p-8 text-center shadow-xl">
+        <h1 class="text-4xl font-bold mb-2">Zambia's Circular Economy: Untapped Potential & Digital Transformation</h1>
+        <p class="text-xl text-gray-300">An Infographic on Market Trends, Challenges, and Innovations</p>
+    </header>
+
+    <main class="container mx-auto p-6 md:p-10">
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold section-title mb-3 text-center">Market Overview: A USD 187M+ Invisible Economy</h2>
+            <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Zambia's circular economy holds significant, largely unmeasured economic potential. Current data reveals a substantial gap between waste generated and resources formally tracked, pointing to a vast informal market and missed opportunities for value creation.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 text-center">
+                <div class="stat-card p-6 rounded-lg shadow-lg">
+                    <h3 class="text-5xl font-extrabold accent-text">3.9M</h3>
+                    <p class="text-gray-600 text-lg mt-1">Tonnes of MSW Generated Annually</p>
+                </div>
+                <div class="stat-card p-6 rounded-lg shadow-lg">
+                    <h3 class="text-5xl font-extrabold accent-text">55%</h3>
+                    <p class="text-gray-600 text-lg mt-1">Waste Untracked by Formal Systems</p>
+                </div>
+                <div class="stat-card p-6 rounded-lg shadow-lg">
+                    <h3 class="text-5xl font-extrabold accent-text">$187M+</h3>
+                    <p class="text-gray-600 text-lg mt-1">Unmeasured Annual Circular Activity</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-2xl">
+                <h3 class="text-2xl font-semibold sub-title mb-6 text-center">Waste Generation vs. Formal Data Capture</h3>
+                <p class="text-center text-gray-600 mb-6">Only a fraction of Zambia's municipal solid waste is formally tracked, obscuring the true scale of material flows and recycling potential. This data gap hinders effective resource management and policy.</p>
+                <div class="chart-container h-[350px] md:h-[400px] max-h-[450px]"><canvas id="wasteCaptureChart"></canvas></div>
+                <p class="text-center text-sm text-gray-500 mt-4">Source: Self Help Africa, 2024</p>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold section-title mb-3 text-center">The "Recycling Paradox": A Critical Market Inefficiency</h2>
+            <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Zambia's official recycling rate is strikingly low, yet the vast majority of its waste materials hold economic value. This paradox highlights a significant inefficiency and a missed opportunity for resource recovery and economic development.</p>
+            <div class="bg-white p-8 rounded-xl shadow-2xl">
+                <h3 class="text-2xl font-semibold sub-title mb-6 text-center">Recycling Rate vs. Material Value Potential</h3>
+                <div class="chart-container h-[350px] md:h-[400px] max-h-[450px]"><canvas id="recyclingParadoxChart"></canvas></div>
+                <p class="text-center text-sm text-gray-500 mt-4">This disparity indicates a substantial opportunity for developing recycling infrastructure and markets. (Source: Self Help Africa, 2024)</p>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold section-title mb-3 text-center">Barriers to Circular Economy Market Growth</h2>
+            <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Several infrastructural and institutional challenges hinder the formalization and growth of Zambia's circular economy market, preventing the realization of its full economic and environmental benefits.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-2xl">
+                    <h3 class="text-2xl font-semibold sub-title mb-6 flex items-center"><span class="icon-style">&#128736;</span>Infrastructure Deficits</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start"><span class="icon-style text-sm mr-2 mt-1">&#9888;</span><span><strong class="text-[#073B4C]">Weighbridge Crisis:</strong> Non-functional equipment prevents accurate waste measurement.</span></li>
+                        <li class="flex items-start"><span class="icon-style text-sm mr-2 mt-1">&#128465;</span><span><strong class="text-[#073B4C]">Fragmented Collection:</strong> Lack of standardized bins & source separation.</span></li>
+                        <li class="flex items-start"><span class="icon-style text-sm mr-2 mt-1">&#128241;</span><span><strong class="text-[#073B4C]">Technology Gaps:</strong> Limited use of digital tools in municipal operations.</span></li>
+                        <li class="flex items-start"><span class="icon-style text-sm mr-2 mt-1">&#128187;</span><span><strong class="text-[#073B4C]">Data Storage Issues:</strong> Incompatible systems, no national aggregation.</span></li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-2xl">
+                    <h3 class="text-2xl font-semibold sub-title mb-6 flex items-center"><span class="icon-style">&#127974;</span>Institutional Constraints</h3>
+                     <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start"><span class="icon-style text-sm mr-2 mt-1">&#128176;</span><span><strong class="text-[#073B4C]">ZamStats Limitations:</strong> Environmental statistics underfunded & understaffed.</span></li>
+                        <li class="flex items-start"><span class="icon-style text-sm mr-2 mt-1">&#128100;</span><span><strong class="text-[#073B4C]">Poor Coordination:</strong> Agencies (ZEMA, Municipalities) working in silos.</span></li>
+                        <li class="flex items-start"><span class="icon-style text-sm mr-2 mt-1">&#127891;</span><span><strong class="text-[#073B4C]">Technical Capacity Gaps:</strong> Limited expertise in CE metrics & data analysis.</span></li>
+                        <li class="flex items-start"><span class="icon-style text-sm mr-2 mt-1">&#128220;</span><span><strong class="text-[#073B4C]">Policy Implementation Deficits:</strong> Strategies often undelivered.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold section-title mb-3 text-center">Regional Market Landscape & Emerging Models</h2>
+            <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Zambia's challenges are shared across Sub-Saharan Africa. However, innovative digital solutions are emerging, offering valuable lessons for market development and informal sector integration.</p>
+            
+            <div class="bg-white p-8 rounded-xl shadow-2xl mb-10">
+                <h3 class="text-2xl font-semibold sub-title mb-6 text-center">Formal Waste Collection Rates in Sub-Saharan Africa</h3>
+                <div class="chart-container h-[350px] md:h-[400px] max-h-[450px]"><canvas id="ssaCollectionChart"></canvas></div>
+                <p class="text-center text-sm text-gray-500 mt-4">Illustrates the widespread challenge of informal waste management. (Source: Kaza et al., 2018; Self Help Africa, 2024)</p>
+            </div>
+
+            <h3 class="text-2xl font-semibold sub-title mb-6 text-center">Regional Success Stories: Digital Innovations in CE</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-[#06D6A0] text-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-xl font-bold mb-2">BanQu (South Africa)</h4>
+                    <p class="text-sm">Blockchain platform empowering 8,800+ waste reclaimers, tracking 8,700+ tonnes of recyclables.</p>
+                </div>
+                <div class="bg-[#118AB2] text-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-xl font-bold mb-2">Rwanda's Digital Strategy</h4>
+                    <p class="text-sm">ICT-driven national plan for systematic waste data collection and high urban recycling targets.</p>
+                </div>
+                <div class="bg-[#FFD166] text-[#073B4C] p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-xl font-bold mb-2">Wecyclers (Nigeria)</h4>
+                    <p class="text-sm">SMS-based collection engaging thousands in low-income areas with incentives.</p>
+                </div>
+                <div class="bg-[#FF6B6B] text-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-xl font-bold mb-2">EcoPost (Kenya)</h4>
+                    <p class="text-sm">Plastic-to-construction materials with app-managed collection from community groups.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold section-title mb-3 text-center">Digital SMEs: Catalyzing Market Transformation</h2>
+            <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Innovative Small and Medium-sized Enterprises (SMEs) are leveraging digital technologies to bridge data gaps, formalize informal activities, and create new market efficiencies in Zambia's circular economy.</p>
+            <div class="bg-white p-8 rounded-xl shadow-2xl">
+                <h3 class="text-2xl font-semibold sub-title mb-6 text-center">How Digital SMEs Drive Data Generation</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+                    <div class="p-4 border-l-4 border-[#06D6A0] bg-gray-50 rounded-md">
+                        <h4 class="font-semibold text-[#073B4C] mb-1">Distributed Data Capture</h4>
+                        <p class="text-sm">SMEs act as numerous "sensors," collecting granular data at multiple points in the waste ecosystem.</p>
+                    </div>
+                    <div class="p-4 border-l-4 border-[#06D6A0] bg-gray-50 rounded-md">
+                        <h4 class="font-semibold text-[#073B4C] mb-1">Participatory Systems</h4>
+                        <p class="text-sm">Citizens & informal workers become active data contributors, often linked to direct benefits.</p>
+                    </div>
+                    <div class="p-4 border-l-4 border-[#06D6A0] bg-gray-50 rounded-md">
+                        <h4 class="font-semibold text-[#073B4C] mb-1">Mobile-First Accessibility</h4>
+                        <p class="text-sm">Utilizing apps and USSD to reach a wide range of users, including those with basic phones.</p>
+                    </div>
+                    <div class="p-4 border-l-4 border-[#06D6A0] bg-gray-50 rounded-md">
+                        <h4 class="font-semibold text-[#073B4C] mb-1">Real-Time Intelligence</h4>
+                        <p class="text-sm">Enabling immediate feedback for operational optimization and timely policy interventions.</p>
+                    </div>
+                </div>
+                 <h3 class="text-xl font-semibold sub-title mt-10 mb-4 text-center">Key Technologies Applied</h3>
+                 <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <span class="bg-[#118AB2] text-white px-4 py-2 rounded-full shadow">Mobile Apps & USSD</span>
+                    <span class="bg-[#118AB2] text-white px-4 py-2 rounded-full shadow">Digital Marketplaces</span>
+                    <span class="bg-[#118AB2] text-white px-4 py-2 rounded-full shadow">IoT Integration</span>
+                    <span class="bg-[#118AB2] text-white px-4 py-2 rounded-full shadow">Blockchain</span>
+                    <span class="bg-[#118AB2] text-white px-4 py-2 rounded-full shadow">GIS Mapping</span>
+                 </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold section-title mb-3 text-center">Key Player Spotlight: eBusaka</h2>
+            <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">eBusaka is a Zambian SME pioneering digital solutions in waste management, demonstrating a scalable model for data-driven, inclusive circular economy development in Lusaka.</p>
+            <div class="bg-white p-8 rounded-xl shadow-2xl">
+                <div class="text-center mb-8">
+                    <p class="text-6xl font-extrabold positive-bg text-white inline-block px-6 py-3 rounded-lg shadow-md">15,000+</p>
+                    <p class="text-xl text-gray-700 mt-2">Waste Pickup Requests Processed</p>
+                </div>
+                <h3 class="text-2xl font-semibold sub-title mb-6 text-center">Illustrative Growth of eBusaka's Impact</h3>
+                <div class="chart-container h-[300px] md:h-[350px] max-h-[400px]"><canvas id="ebusakaGrowthChart"></canvas></div>
+                <p class="text-center text-sm text-gray-500 mt-4">eBusaka connects waste producers, collectors, and recyclers via mobile/web apps and USSD, integrating mobile money and GPS tracking. (Source: MIT Solve, 2023; MovingWorlds, 2023)</p>
+                
+                <div class="mt-10">
+                    <h4 class="text-xl font-semibold sub-title mb-4 text-center">eBusaka's Core Model:</h4>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-700 max-w-2xl mx-auto">
+                        <li class="flex items-center"><span class="icon-style text-xl mr-2">&#128241;</span>Cloud-based platform with mobile/web apps.</li>
+                        <li class="flex items-center"><span class="icon-style text-xl mr-2">&#128279;</span>Connects producers, collectors, recyclers.</li>
+                        <li class="flex items-center"><span class="icon-style text-xl mr-2">&#9993;</span>USSD access for basic phone users.</li>
+                        <li class="flex items-center"><span class="icon-style text-xl mr-2">&#128181;</span>Mobile money payment integration.</li>
+                        <li class="flex items-center"><span class="icon-style text-xl mr-2">&#128205;</span>GPS route tracking for logistics.</li>
+                        <li class="flex items-center"><span class="icon-style text-xl mr-2">&#128101;</span>Partnership with Lusaka City Council.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold section-title mb-3 text-center">Future Market Outlook: Policy & Investment Drivers</h2>
+            <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Realizing the full potential of Zambia's circular economy requires strategic policy actions and targeted investments to foster an enabling ecosystem for digital innovation and SME growth.</p>
+            <div class="bg-white p-8 rounded-xl shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold sub-title mb-4 flex items-center"><span class="icon-style">&#128196;</span>Immediate Enabling Actions (0-12 Months)</h3>
+                        <ul class="space-y-3 text-gray-700 text-sm">
+                            <li class="p-3 bg-gray-50 rounded-md border-l-4 border-[#FF6B6B]"><strong>SME Recognition & Support:</strong> Formally acknowledge digital CE platforms in policy.</li>
+                            <li class="p-3 bg-gray-50 rounded-md border-l-4 border-[#FF6B6B]"><strong>Data Integration Protocols:</strong> Standardize mechanisms for SME data to feed national systems.</li>
+                            <li class="p-3 bg-gray-50 rounded-md border-l-4 border-[#FF6B6B]"><strong>Regulatory Clarity:</strong> Streamline licensing and operating guidelines for digital platforms.</li>
+                            <li class="p-3 bg-gray-50 rounded-md border-l-4 border-[#FF6B6B]"><strong>Pilot Program Support:</strong> Government backing for 3-5 SME digital CE pilots.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold sub-title mb-4 flex items-center"><span class="icon-style">&#128200;</span>Ecosystem Development (12-36 Months)</h3>
+                        <ul class="space-y-3 text-gray-700 text-sm">
+                            <li class="p-3 bg-gray-50 rounded-md border-l-4 border-[#FFD166]"><strong>Infrastructure Investment:</strong> Basic data collection equipment, digital connectivity.</li>
+                            <li class="p-3 bg-gray-50 rounded-md border-l-4 border-[#FFD166]"><strong>Capacity Building:</strong> Training for government, SMEs, informal workers.</li>
+                            <li class="p-3 bg-gray-50 rounded-md border-l-4 border-[#FFD166]"><strong>Financial Mechanisms:</strong> Blended finance, impact investment, risk-sharing.</li>
+                            <li class="p-3 bg-gray-50 rounded-md border-l-4 border-[#FFD166]"><strong>Regional Coordination:</strong> Knowledge sharing, cross-border learning.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-center text-gray-600 mt-10 font-semibold">These actions can transform Zambia's data crisis into a comprehensive CE intelligence system, driving sustainable growth.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#073B4C] text-gray-300 p-8 mt-16 text-center">
+        <p>&copy; 2025 Zambia Circular Economy Market Infographic.</p>
+        <p class="text-sm">Data primarily sourced from "From Data Crisis to Digital Solutions" Policy Paper (May 2025) and cited references.</p>
+    </footer>
+
+    <script>
+        const processLabel = (label) => {
+            const maxLength = 16;
+            if (label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const CHART_COLORS = {
+            red: '#FF6B6B',
+            yellow: '#FFD166',
+            green: '#06D6A0',
+            blue: '#118AB2',
+            darkBlue: '#073B4C',
+            lightGray: '#E5E7EB', // For grid lines
+            darkGrayText: '#374151' // For labels
+        };
+
+        // Chart 1: Waste Capture
+        const wasteCaptureCtx = document.getElementById('wasteCaptureChart').getContext('2d');
+        new Chart(wasteCaptureCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [processLabel('Formally Tracked (45%)'), processLabel('Untracked by Formal Systems (55%)')],
+                datasets: [{
+                    label: 'Waste Tracking',
+                    data: [45, 55],
+                    backgroundColor: [CHART_COLORS.green, CHART_COLORS.red],
+                    borderColor: ['#FFFFFF'],
+                    borderWidth: 3,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { color: CHART_COLORS.darkGrayText, font: { size: 12 } }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        // Chart 2: Recycling Paradox
+        const recyclingParadoxCtx = document.getElementById('recyclingParadoxChart').getContext('2d');
+        new Chart(recyclingParadoxCtx, {
+            type: 'bar',
+            data: {
+                labels: [processLabel('Official Recycling Rate'), processLabel('Materials with Economic Value')],
+                datasets: [{
+                    label: 'Percentage (%)',
+                    data: [6, 85],
+                    backgroundColor: [CHART_COLORS.yellow, CHART_COLORS.green],
+                    borderColor: [CHART_COLORS.darkBlue],
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    barPercentage: 0.6,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: { 
+                        beginAtZero: true, 
+                        max: 100, 
+                        ticks: { color: CHART_COLORS.darkGrayText, font: {size: 12}, callback: function(value) { return value + '%'} }, 
+                        grid: { color: CHART_COLORS.lightGray } 
+                    },
+                    y: { ticks: { color: CHART_COLORS.darkGrayText, font: {size: 12} }, grid: { display: false } }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        // Chart 3: SSA Collection Rates
+        const ssaCollectionCtx = document.getElementById('ssaCollectionChart').getContext('2d');
+        new Chart(ssaCollectionCtx, {
+            type: 'bar',
+            data: {
+                labels: [processLabel('Zambia'), processLabel('Kenya (Est.)'), processLabel('Nigeria (Est.)'), processLabel('Ghana (Est.)')],
+                datasets: [{
+                    label: 'Formal Waste Collection Rate (%)',
+                    data: [45, 60, 40, 55],
+                    backgroundColor: [CHART_COLORS.blue, CHART_COLORS.green, CHART_COLORS.yellow, CHART_COLORS.red],
+                    borderColor: [CHART_COLORS.darkBlue],
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    barPercentage: 0.7,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100, 
+                        ticks: { color: CHART_COLORS.darkGrayText, font: {size: 12}, callback: function(value) { return value + '%'} }, 
+                        grid: { color: CHART_COLORS.lightGray } 
+                    },
+                    x: { ticks: { color: CHART_COLORS.darkGrayText, font: {size: 12} }, grid: { display: false } }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        
+        // Chart 4: eBusaka Growth (Illustrative)
+        const ebusakaGrowthCtx = document.getElementById('ebusakaGrowthChart').getContext('2d');
+        new Chart(ebusakaGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: [processLabel('Pilot Phase'), processLabel('Year 1 Est.'), processLabel('Year 2 Est.'), processLabel('Current (15k+)')],
+                datasets: [{
+                    label: 'Pickup Requests Processed',
+                    data: [500, 5000, 10000, 15000], // Illustrative data points
+                    borderColor: CHART_COLORS.green,
+                    backgroundColor: 'rgba(6, 214, 160, 0.2)', // Light green fill
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: CHART_COLORS.green,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: CHART_COLORS.green,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        ticks: { color: CHART_COLORS.darkGrayText, font: {size: 12}, callback: function(value) { return value / 1000 + 'k'; } }, 
+                        grid: { color: CHART_COLORS.lightGray } 
+                    },
+                    x: { ticks: { color: CHART_COLORS.darkGrayText, font: {size: 12} }, grid: { display: false } }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
