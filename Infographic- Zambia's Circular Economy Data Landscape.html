@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Zambia's Circular Economy Data Landscape</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7FAFC; /* bg-slate-100 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* max-w-2xl is 672px, using a slightly smaller one */
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px; /* h-80 */
+            max-height: 400px;
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .chart-container {
+                height: 384px; /* h-96 */
+            }
+        }
+        .section-title {
+            color: #118AB2; /* Cerulean Blue */
+        }
+        .key-stat-value {
+            color: #FF6B6B; /* Coral Red */
+        }
+        .text-midnight-blue {
+            color: #073B4C;
+        }
+        .bg-coral-red { background-color: #FF6B6B; }
+        .text-coral-red { color: #FF6B6B; }
+        .bg-sunny-yellow { background-color: #FFD166; }
+        .text-sunny-yellow { color: #FFD166; }
+        .bg-teal-green { background-color: #06D6A0; }
+        .text-teal-green { color: #06D6A0; }
+        .bg-cerulean-blue { background-color: #118AB2; }
+        .text-cerulean-blue { color: #118AB2; }
+        .bg-midnight-blue { background-color: #073B4C; }
+        
+        .flowchart-step {
+            border: 2px solid #118AB2; /* Cerulean Blue */
+            color: #073B4C; /* Midnight Blue */
+        }
+        .flowchart-arrow {
+            color: #118AB2; /* Cerulean Blue */
+        }
+        .swot-box {
+            border: 2px solid #06D6A0; /* Teal Green */
+        }
+        .swot-title {
+            background-color: #06D6A0; /* Teal Green */
+        }
+        .challenge-box {
+            border: 2px solid #FF6B6B; /* Coral Red */
+        }
+        .challenge-title {
+            background-color: #FF6B6B; /* Coral Red */
+        }
+         .pillar {
+            background-color: #E0F2FE; /* light blue, tailwind sky-100 */
+            border-left: 5px solid #118AB2; /* Cerulean Blue */
+        }
+    </style>
+</head>
+<body class="text-midnight-blue">
+    <!-- 
+        Chosen Color Palette: "Energetic & Playful"
+        Primary Action/Highlight: #FF6B6B (Coral Red)
+        Secondary Accent/Data Point: #FFD166 (Sunny Yellow)
+        Positive/Growth: #06D6A0 (Teal Green)
+        Neutral/Text Background Support: #118AB2 (Cerulean Blue)
+        Dark Text/Deep Background: #073B4C (Midnight Blue)
+        Main Background: #F7FAFC (Slate 100)
+        Card Backgrounds: #FFFFFF (White)
+
+        Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in this output.
+        All diagrams are implemented using HTML and Tailwind CSS.
+        All charts are implemented using Chart.js with Canvas rendering.
+
+        Infographic Narrative & Structure Plan:
+        1. Title & Introduction: Importance of data for CE in Zambia.
+        2. The Data Deficit in Zambia: Key statistics on waste generation, collection, recycling. Visuals: Donut chart (Waste Fate), Bar chart (Lusaka Waste Composition).
+        3. The "Metrics Gap": Why global frameworks are incompatible. Visual: HTML/CSS conceptual diagram.
+        4. SMEs & Startups - Data Innovators: Role of SMEs, technologies used. Visual: HTML/CSS icon-like representations.
+        5. Digitizing the Informal Sector: Integrating informal actors, Zambian examples, benefits. Visual: HTML/CSS flow chart, SME cards.
+        6. Key Challenges: Limited capital, interoperability, policy alignment. Visual: HTML/CSS list/diagram.
+        7. The Path Forward - Ecosystem Enablement: Policy needs, regulatory sandboxes, finance. Visual: HTML/CSS pillars.
+        8. Conclusion: Reinforcing local systems.
+
+        Visualization Choices (Confirming NO SVG, NO MERMAID):
+        - Waste Generation (3.9M tonnes/yr): Goal: Inform -> Single Big Number (HTML/CSS).
+        - Waste Fate (Collected, Recycled, Uncollected): Goal: Compare -> Donut Chart (Chart.js Canvas).
+        - Lusaka Waste Composition: Goal: Compare -> Bar Chart (Chart.js Canvas).
+        - Metrics Gap Diagram: Goal: Organize/Explain -> HTML/CSS Diagram.
+        - Technology Icons: Goal: Organize/Inform -> HTML/CSS Representations.
+        - Informal Sector Integration Flowchart: Goal: Organize -> HTML/CSS Flow Chart.
+        - SME Example Cards: Goal: Inform/Compare -> HTML/CSS Cards.
+        - Challenges List/Diagram: Goal: Organize -> HTML/CSS List/Diagram.
+        - Ecosystem Pillars: Goal: Organize -> HTML/CSS Diagram.
+        - All Chart.js instances will have label wrapping and specified tooltip configuration.
+    -->
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold section-title mb-4">Bridging Zambia's Circular Economy Data Divide</h1>
+            <p class="text-lg md:text-xl text-midnight-blue">An Infographic Report on Challenges, Innovations, and the Path Forward</p>
+        </header>
+
+        <section class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold section-title mb-3">The Data Imperative for Circularity</h2>
+            <p class="text-md mb-4">The transition to a circular economy (CE) is critical for sustainable development, aiming to decouple economic growth from environmental degradation. However, this transition fundamentally depends on robust, reliable, and accessible data. In Sub-Saharan Africa, and particularly in Zambia, a significant "data deficit" hinders the formulation of evidence-based CE policies, targeted investments, and effective monitoring of progress.</p>
+            <p class="text-md">This infographic explores Zambia's CE data landscape, highlighting the challenges posed by data scarcity, the innovative role of Small and Medium-sized Enterprises (SMEs) in bridging this gap through digitization, and the necessary ecosystem support to foster a data-literate and inclusive circular economy.</p>
+        </section>
+
+        <section id="data-deficit" class="mb-12">
+            <h2 class="text-3xl font-bold section-title text-center mb-8">The Data Deficit: Zambia's Waste Landscape</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-center">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-midnight-blue mb-2">Annual MSW Generation</h3>
+                    <p class="text-4xl font-bold key-stat-value">3.9M</p>
+                    <p class="text-midnight-blue">tonnes</p>
+                    <p class="text-sm text-gray-600 mt-1">(Source: Self Help Africa, 2024)</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-midnight-blue mb-2">Formal Collection Rate</h3>
+                    <p class="text-4xl font-bold key-stat-value">~45%</p>
+                    <p class="text-midnight-blue">of MSW</p>
+                     <p class="text-sm text-gray-600 mt-1">(Source: Kaza et al., 2018; Self Help Africa, 2024)</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-midnight-blue mb-2">Formal Recycling Rate</h3>
+                    <p class="text-4xl font-bold key-stat-value">~6%</p>
+                    <p class="text-midnight-blue">of MSW</p>
+                     <p class="text-sm text-gray-600 mt-1">(Source: Self Help Africa, 2024)</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-midnight-blue mb-4 text-center">Fate of Municipal Solid Waste (MSW) in Zambia (Estimates)</h3>
+                    <div class="chart-container">
+                        <canvas id="wasteFateChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-700 mt-4">A significant portion of waste remains uncollected or is disposed of in unmanaged sites, highlighting the scale of the challenge and the data gaps in tracking these flows. The 6% recycled is part of the 45% formally collected.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-midnight-blue mb-4 text-center">Lusaka Waste Composition (Example)</h3>
+                    <div class="chart-container">
+                        <canvas id="lusakaWasteCompositionChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-700 mt-4">Organic waste dominates, presenting opportunities for composting and biogas, yet detailed, regular composition surveys are scarce nationwide. (Source: ACCP, 2019)</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                <h3 class="text-xl font-semibold text-midnight-blue mb-2">Impact of the Data Vacuum</h3>
+                <ul class="list-disc list-inside text-md space-y-1">
+                    <li>Invisibility of the informal economy's significant contributions to recycling.</li>
+                    <li>Difficulty in formulating targeted, evidence-based CE policies and investments.</li>
+                    <li>Challenges in tracking progress towards national and international sustainability goals.</li>
+                    <li>Under-resourced national statistical offices (e.g., ZamStats) struggle with environmental data collection.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="metrics-gap" class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-3xl font-bold section-title text-center mb-6">The "Metrics Gap": Global Frameworks vs. Local Realities</h2>
+            <p class="text-md text-center mb-6">Major international CE measurement frameworks, often designed for data-rich, industrialized nations, are frequently incompatible with the realities of Zambia and other SSA countries. This creates a "metrics gap."</p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 p-4 rounded-lg">
+                <div class="text-center md:text-right p-4 border-2 border-dashed border-gray-300 rounded-lg w-full md:w-2/5">
+                    <h4 class="text-lg font-semibold text-midnight-blue mb-2">International CE Metrics</h4>
+                    <p class="text-sm">Often assume:</p>
+                    <ul class="list-none text-sm space-y-1">
+                        <li>High data availability</li>
+                        <li>Formalized economies</li>
+                        <li>Large-scale industry focus</li>
+                        <li>Resource-intensive methods</li>
+                    </ul>
+                </div>
+                <div class="text-4xl font-bold text-coral-red transform md:rotate-0 rotate-90">&rlarr;</div>
+                <div class="text-center md:text-left p-4 border-2 border-dashed border-gray-300 rounded-lg w-full md:w-2/5">
+                    <h4 class="text-lg font-semibold text-midnight-blue mb-2">SSA/Zambian Context</h4>
+                    <p class="text-sm">Characterized by:</p>
+                    <ul class="list-none text-sm space-y-1">
+                        <li>Significant data deficits</li>
+                        <li>Dominant informal sector</li>
+                        <li>SME-driven circularity</li>
+                        <li>Limited resources for data</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-md text-center mt-6">This incompatibility leads to underreporting of actual circular activities, especially those within the informal sector, and hinders effective CE strategy development tailored to local needs.</p>
+        </section>
+
+        <section id="sme-innovation" class="mb-12">
+            <h2 class="text-3xl font-bold section-title text-center mb-8">SMEs & Startups: Powering Data Innovation</h2>
+            <p class="text-md text-center mb-6">SMEs and startups in Zambia are emerging as crucial innovators, leveraging digital technologies to address the data deficit and drive bottom-up CE solutions.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-3 text-teal-green">📱</div>
+                    <h3 class="text-lg font-semibold text-midnight-blue mb-1">Mobile Applications</h3>
+                    <p class="text-sm">Facilitating waste collection requests, reporting, and connecting actors.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-3 text-teal-green">🌐</div>
+                    <h3 class="text-lg font-semibold text-midnight-blue mb-1">Digital Marketplaces</h3>
+                    <p class="text-sm">Linking sellers and buyers of recyclables, improving price transparency.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-3 text-teal-green">🛰️</div>
+                    <h3 class="text-lg font-semibold text-midnight-blue mb-1">IoT & Sensors</h3>
+                    <p class="text-sm">Emerging for smart waste monitoring and optimizing collection routes (less common for SMEs yet).</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-3 text-teal-green">🔗</div>
+                    <h3 class="text-lg font-semibold text-midnight-blue mb-1">Blockchain</h3>
+                    <p class="text-sm">Exploring potential for transparency and traceability in waste value chains.</p>
+                </div>
+            </div>
+            <p class="text-md text-center mt-6">These technologies not only improve operational efficiency but also generate valuable data on material flows and circular activities previously unrecorded, fostering a shift towards participatory CE data systems.</p>
+        </section>
+
+        <section id="informal-sector" class="mb-12">
+            <h2 class="text-3xl font-bold section-title text-center mb-8">Digitizing the Informal Sector: From Barrier to Foundation</h2>
+            <p class="text-md text-center mb-6">Traditionally viewed as a barrier, the informal economy is increasingly recognized as a starting point for inclusive CE innovation, with digitization as a key enabler.</p>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h3 class="text-xl font-semibold text-midnight-blue mb-4 text-center">How Digitization Integrates Informal Actors & Generates Data</h3>
+                <div class="flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:justify-around md:items-start">
+                    <div class="flowchart-step p-3 rounded-md text-center w-full md:w-1/4">
+                        <span class="text-2xl">👨‍🌾</span><br/>Informal Waste Collectors
+                        <p class="text-xs">Use mobile tools (App/USSD)</p>
+                    </div>
+                    <div class="flowchart-arrow text-2xl font-bold mt-2 md:mt-8">&rarr;</div>
+                    <div class="flowchart-step p-3 rounded-md text-center w-full md:w-1/3">
+                        <span class="text-2xl">📲</span><br/>Digital Platform (SME-led)
+                        <p class="text-xs">Connects collectors to households/businesses & recyclers. Records transactions & material types/quantities.</p>
+                    </div>
+                    <div class="flowchart-arrow text-2xl font-bold mt-2 md:mt-8">&rarr;</div>
+                     <div class="flowchart-step p-3 rounded-md text-center w-full md:w-1/4">
+                        <span class="text-2xl">📊</span><br/>Structured Data
+                        <p class="text-xs">Informs CE policy, planning & market insights.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-midnight-blue mb-6 text-center">Zambian Examples (Literature Snapshot)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h4 class="font-semibold text-cerulean-blue">eBusaka</h4>
+                    <p class="text-sm">Digital platform connecting waste producers, collectors, and recyclers. (Source: UNIDO, Alimi Projects)</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h4 class="font-semibold text-cerulean-blue">Manja Pamodzi</h4>
+                    <p class="text-sm">Collection network for recyclables supporting informal collectors via aggregators. (Source: Zambian Breweries, GIZ)</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h4 class="font-semibold text-cerulean-blue">WeSEPO</h4>
+                    <p class="text-sm">Association representing and advocating for informal waste pickers. (Source: Various reports)</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h4 class="font-semibold text-cerulean-blue">Recyclebot</h4>
+                    <p class="text-sm">Startup using digital innovation (likely mobile app) for waste management. (Source: Lendelvo et al., 2022)</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-midnight-blue mb-2">Benefits of Data Formalization for Informal Actors:</h3>
+                <ul class="list-disc list-inside text-md space-y-1">
+                    <li><span class="font-semibold text-teal-green">Inclusion & Visibility:</span> Makes contributions recognizable.</li>
+                    <li><span class="font-semibold text-teal-green">Strengthened Livelihoods:</span> Improves market access and income.</li>
+                    <li><span class="font-semibold text-teal-green">Policy Recognition:</span> Provides evidence for inclusion in planning.</li>
+                    <li><span class="font-semibold text-teal-green">Improved Conditions:</span> Potential for access to services and social protection.</li>
+                </ul>
+            </div>
+        </section>
+
+         <section id="challenges" class="mb-12">
+            <h2 class="text-3xl font-bold section-title text-center mb-8">Key Challenges for Data Innovators</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="challenge-box bg-white rounded-lg shadow-md p-1">
+                    <div class="challenge-title text-white font-semibold p-3 rounded-t-md">
+                        <h3 class="text-lg text-center">Limited Access to Capital</h3>
+                    </div>
+                    <p class="p-4 text-sm">Difficulty for SMEs and startups to secure funding for scaling digital solutions and operations.</p>
+                </div>
+                <div class="challenge-box bg-white rounded-lg shadow-md p-1">
+                     <div class="challenge-title text-white font-semibold p-3 rounded-t-md">
+                        <h3 class="text-lg text-center">Lack of Interoperability</h3>
+                    </div>
+                    <p class="p-4 text-sm">Proprietary digital tools often struggle to integrate with each other or national data frameworks, leading to fragmented data.</p>
+                </div>
+                <div class="challenge-box bg-white rounded-lg shadow-md p-1">
+                    <div class="challenge-title text-white font-semibold p-3 rounded-t-md">
+                        <h3 class="text-lg text-center">Weak Policy Alignment</h3>
+                    </div>
+                    <p class="p-4 text-sm">Few CE policies in Zambia formally recognize startup-generated data or provide specific incentives/integration channels.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ecosystem-enablement" class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-3xl font-bold section-title text-center mb-8">The Path Forward: Ecosystem Enablement</h2>
+            <p class="text-md text-center mb-6">Realizing the potential of digital SMEs requires a supportive ecosystem. Key elements include:</p>
+            <div class="space-y-4">
+                <div class="pillar p-4 rounded-md">
+                    <h4 class="font-semibold text-xl text-cerulean-blue mb-1">Supportive National Policies</h4>
+                    <p class="text-sm">Develop National CE Data Strategies, invest in basic data infrastructure, standardize collection, and promote Open Data (FAIR) principles.</p>
+                </div>
+                <div class="pillar p-4 rounded-md">
+                    <h4 class="font-semibold text-xl text-cerulean-blue mb-1">Regulatory Sandboxes & Incentives</h4>
+                    <p class="text-sm">Allow controlled piloting of innovations and provide fiscal/non-fiscal incentives for digital adoption and data contribution by SMEs.</p>
+                </div>
+                <div class="pillar p-4 rounded-md">
+                    <h4 class="font-semibold text-xl text-cerulean-blue mb-1">Blended Finance & Investment</h4>
+                    <p class="text-sm">Facilitate financial mechanisms that de-risk and catalyze private investment into CE-focused SMEs and data infrastructure.</p>
+                </div>
+                <div class="pillar p-4 rounded-md">
+                    <h4 class="font-semibold text-xl text-cerulean-blue mb-1">Inclusive Informal Sector Integration</h4>
+                    <p class="text-sm">Ensure digital tools are accessible, provide digital literacy, and support fair compensation and access to services for informal workers.</p>
+                </div>
+                <div class="pillar p-4 rounded-md">
+                    <h4 class="font-semibold text-xl text-cerulean-blue mb-1">Cross-Sectoral Governance & Coordination</h4>
+                    <p class="text-sm">Establish multi-stakeholder bodies to ensure policy coherence, resource mobilization, and collaborative action among all CE actors.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center mt-12 bg-midnight-blue text-white rounded-lg shadow-xl p-8">
+            <h2 class="text-3xl font-bold mb-4">A Data-Literate Circular Future for Zambia</h2>
+            <p class="text-lg mb-4">The circular economy transition in Zambia depends not on importing external models, but on recognizing and reinforcing local systems. Digital SMEs are surfacing the invisible, turning informal circular activity into structured, usable data.</p>
+            <p class="text-lg font-semibold">With appropriate ecosystem support, they offer a scalable, inclusive, and evidence-based path toward a just and data-literate circular economy.</p>
+        </section>
+
+        <footer class="text-center text-sm text-gray-600 mt-12 py-4 border-t border-gray-300">
+            <p>Infographic based on the literature review: "Bridging the Data Divide: The Role of SMEs and Digitization in Zambia's Circular Economy Transition."</p>
+            <p>Data points sourced from various reports and academic literature as cited in the review.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Helper function to wrap labels for Chart.js
+        function wrapLabels(label, maxWidth) {
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + ' ' + words[i]).length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                } else {
+                    currentLine += ' ' + words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+        
+        const commonTooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        // Chart 1: Waste Fate
+        const wasteFateCtx = document.getElementById('wasteFateChart').getContext('2d');
+        const wasteFateData = {
+            labels: [
+                wrapLabels('Collected & Disposed (not recycled)', 16), 
+                wrapLabels('Recycled (Formal)', 16), 
+                wrapLabels('Uncollected / Informally Disposed', 16)
+            ],
+            datasets: [{
+                label: 'Fate of MSW',
+                data: [39, 6, 55], // 39% collected & disposed, 6% recycled, 55% uncollected
+                backgroundColor: [
+                    '#FFD166', // Sunny Yellow
+                    '#06D6A0', // Teal Green
+                    '#FF6B6B', // Coral Red
+                ],
+                borderColor: '#FFFFFF',
+                borderWidth: 2
+            }]
+        };
+        new Chart(wasteFateCtx, {
+            type: 'doughnut',
+            data: wasteFateData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                             font: { size: 10 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: commonTooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Lusaka Waste Composition
+        const lusakaWasteCtx = document.getElementById('lusakaWasteCompositionChart').getContext('2d');
+        const lusakaWasteData = {
+            labels: [
+                wrapLabels('Food Waste', 16), 
+                wrapLabels('Plastics', 16), 
+                wrapLabels('Paper', 16), 
+                wrapLabels('Others (Inert, etc.)', 16)
+            ],
+            datasets: [{
+                label: 'Lusaka Waste Composition (%)',
+                data: [50, 5, 5, 37], // Example data from report
+                backgroundColor: [
+                    '#06D6A0', // Teal Green
+                    '#FF6B6B', // Coral Red
+                    '#FFD166', // Sunny Yellow
+                    '#118AB2', // Cerulean Blue
+                ],
+                borderColor: [
+                    '#06D6A0',
+                    '#FF6B6B',
+                    '#FFD166',
+                    '#118AB2',
+                ],
+                borderWidth: 1
+            }]
+        };
+        new Chart(lusakaWasteCtx, {
+            type: 'bar',
+            data: lusakaWasteData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Percentage (%)'
+                        }
+                    },
+                    y: {
+                         ticks: { font: { size: 10 } }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: commonTooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
